@@ -52,6 +52,11 @@ nav a:hover {
 }
 
 .hero {
+  background-image: radial-gradient(
+    circle at top right,
+    rgba(159, 178, 138, 0.25),
+    transparent 60%);
+  
   max-width: 900px;
   margin: 4rem auto;
   padding: 2rem;
