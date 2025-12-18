@@ -1,20 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Prism CSS for theme -->
-<link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet" />
-<link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-
-
-<!-- Prism JS -->
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects - Chasity</title>
+  
+  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
+  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+  
+  <!-- Prism JS -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 </head>
 <body>
   <header>
@@ -32,14 +30,16 @@
       <h2>Animal Manager Console App</h2>
       <p>Interactive Python console app with modular functions and loops.</p>
 
+      <!-- Tabs -->
       <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'main')">main.py</button>
-        <button class="tab-button" onclick="openTab(event, 'functions')">functions.py</button>
-        <button class="tab-button" onclick="openTab(event, 'data')">data.py</button>
+        <button class="tab-button active" data-tab="main">main.py</button>
+        <button class="tab-button" data-tab="functions">functions.py</button>
+        <button class="tab-button" data-tab="data">data.py</button>
       </div>
 
+      <!-- Code Tabs -->
       <div id="main" class="tab-content active">
-  <pre><code class="language-python">
+        <pre><code class="language-python">
 from functions import add_animal, list_animals
 
 animals = []
@@ -59,33 +59,68 @@ while True:
         break
     else:
         print("Invalid choice.")
-  </code></pre>
-</div>
+        </code></pre>
+      </div>
 
       <div id="functions" class="tab-content">
-        <pre><code class="language-python">def add_animal(animals_list):
-    # Function code here
-    pass
+        <pre><code class="language-python">
+def add_animal(animals_list):
+    """
+    Adds a new animal to the shelter list.
+    Prompts the user for name, species, age, and adoption status.
+    """
+    name = input("Enter animal's name: ")
+    species = input("Enter species (Dog/Cat): ")
+    age = int(input("Enter age: "))
+    adopted_input = input("Is the animal adopted? (yes/no): ").lower()
+    adopted = adopted_input == "yes"
+
+    animal = {
+        "name": name,
+        "species": species,
+        "age": age,
+        "adopted": adopted
+    }
+
+    animals_list.append(animal)
+    print(f"{name} has been added to the shelter.")
+
 
 def list_animals(animals_list):
-    # Function code here
-    pass</code></pre>
+    """
+    Prints all animals that are currently in the shelter
+    and not adopted yet.
+    """
+    print("Current Animals in Shelter:")
+    for animal in animals_list:
+        if not animal["adopted"]:
+            print(f"{animal['name']}, {animal['species']}, Age: {animal['age']}")
+        </code></pre>
       </div>
 
       <div id="data" class="tab-content">
-        <pre><code class="language-python">animals = []  # Initial data</code></pre>
-      </div>
+        <pre><code class="language-python">
+# Initial data for the shelter
 
-      <p>GitHub Repository: <a href="https://github.com/yourusername/animal-manager" target="_blank">View Code</a></p>
+animals = []
+
+# Add sample animals
+animals.append({"name": "Harley", "species": "Dog", "age": 5, "adopted": False})
+animals.append({"name": "Sigrid", "species": "Dog", "age": 1, "adopted": True})
+animals.append({"name": "Koko", "species": "Cat", "age": 6, "adopted": True})
+animals.append({"name": "Koda", "species": "Cat", "age": 2, "adopted": False})
+        </code></pre>
+      </div>
     </section>
 
-    <!-- Add more project cards below as needed -->
+    <!-- Additional project cards can go here -->
   </main>
 
   <footer>
     <p>&copy; 2025 Chasity Spitznogle</p>
   </footer>
 
+  <!-- Scripts -->
   <script src="js/main.js"></script>
 </body>
 </html>
