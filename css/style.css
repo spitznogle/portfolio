@@ -78,7 +78,7 @@ nav a:hover {
 }
 
 .hero {
-  border-radius: 15px 50px 30px 5px;
+  border-radius: 150px 50px 30px 10px;
   background:
     radial-gradient(
       circle at top left,
@@ -156,4 +156,81 @@ nav a:hover {
       rgba(42, 50, 54, 0.92)
     );
   backdrop-filter: blur(2px);
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin: 1.5rem 0 0;
+  flex-wrap: wrap;
+}
+
+/* Base tab */
+.tab-button {
+  background: linear-gradient(
+    145deg,
+    #2a3236,
+    #242b2f
+  );
+  color: var(--text-muted);
+  border: 1px solid rgba(127, 209, 200, 0.15);
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  font-weight: 600;
+  border-radius: 10px 10px 0 0;
+  transition: all 0.25s ease;
+}
+
+/* Hover = subtle flash */
+.tab-button:hover {
+  color: var(--accent-glow);
+  box-shadow:
+    inset 0 0 10px rgba(127, 209, 200, 0.15);
+}
+
+/* Active tab = polished labradorite */
+.tab-button.active {
+  background: linear-gradient(
+    145deg,
+    #354f52,
+    #2f3e46
+  );
+  color: var(--text-color);
+  border-bottom: none;
+  box-shadow:
+    0 -2px 12px rgba(127, 209, 200, 0.45),
+    inset 0 0 12px rgba(127, 209, 200, 0.2);
+  position: relative;
+  z-index: 2;
+}
+
+.tab-content {
+  display: none;
+  background:
+    linear-gradient(
+      rgba(42, 50, 54, 0.96),
+      rgba(42, 50, 54, 0.96)
+    );
+  padding: 1.25rem;
+  border-radius: 0 14px 14px 14px;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.6),
+    inset 0 0 18px rgba(95, 179, 179, 0.08);
+  margin-top: -1px;
+}
+
+.tab-button.active::after {
+  content: "";
+  position: absolute;
+  left: 10%;
+  right: 10%;
+  bottom: -2px;
+  height: 2px;
+  background: linear-gradient(
+    to right,
+    transparent,
+    var(--accent-glow),
+    transparent
+  );
 }
