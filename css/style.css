@@ -1,4 +1,4 @@
-/* Palette 1 Colors */
+/* Palette Colors */
 :root {
   --primary-color: #A3B18A;    /* Sage Green */
   --secondary-color: #F4F1DE;  /* Warm Cream */
@@ -8,11 +8,17 @@
 }
 
 body {
-  font-family: 'Arial', sans-serif;
-  background-color: var(--background-color);
-  color: var(--text-color);
   margin: 0;
   padding: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f9f9f9; /* light, soft background */
+  color: #333; /* Esay-on-the-Eyes text */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Vertical centering */
+  align-items: center; /* Horizontal centering */
+  min-height: 100vh; /* Full Viewport height */
+  text-align: center; /* Center text inside */
 }
 
 header {
@@ -20,6 +26,12 @@ header {
   padding: 20px;
   text-align: center;
   color: white;
+}
+
+main {
+  max-width: 800px;
+  padding: 20px;
+  line-height: 1.6;
 }
 
 nav a {
@@ -77,4 +89,10 @@ nav a {
   border-radius: 0 0 10px 10px;
   overflow-x: auto;
   margin-top: -5px;
+}
+
+footer {
+  margin-top: 40px;
+  font-size: 0.9rem;
+  color: #777;
 }
