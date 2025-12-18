@@ -13,19 +13,33 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
   background:
-    radial-gradient(
-      circle at top right,
-      rgba(95, 179, 179, 0.12),
-      transparent 60%
+    linear-gradient(
+      rgba(20, 26, 30, 0.85),
+      rgba(20, 26, 30, 0.85)
     ),
-    var(--background-color);
+    url("images/background_texture.png");
+
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+
   color: var(--text-color);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
   min-height: 100vh;
-  text-align: center;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  body {
+    background-position: center;
+    animation: stoneShift 90s linear infinite;
+  }
+
+  @keyframes stoneShift {
+    0%   { background-position: center top; }
+    50%  { background-position: center center; }
+    100% { background-position: center top; }
+  }
 }
 
 header {
@@ -127,4 +141,14 @@ nav a:hover {
     0 10px 25px rgba(0, 0, 0, 0.6);
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
+}
+
+.section-card,
+.project-card {
+  background:
+    linear-gradient(
+      rgba(42, 50, 54, 0.92),
+      rgba(42, 50, 54, 0.92)
+    );
+  backdrop-filter: blur(2px);
 }
