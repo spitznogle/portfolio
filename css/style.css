@@ -253,54 +253,52 @@ nav a:hover {
     border-color: #7fd1c8;
 }
 
-/* Prism syntax highlighting for dark labradorite background */
+/* Prism.js syntax highlighting - neon labradorite vibes */
 .token.comment,
 .token.prolog,
 .token.doctype,
 .token.cdata {
-    color: #7a8a91; /* muted gray for comments */
+    color: #5a5a5a; /* muted gray for comments */
     font-style: italic;
 }
 
 .token.keyword {
-    color: #5fffd7; /* bright teal/aqua — pops nicely */
+    color: #00fff0; /* neon teal for keywords */
     font-weight: bold;
 }
 
 .token.function {
-    color: #7fd1c8; /* soft cyan for function names */
+    color: #ff8c00; /* neon orange for function names */
 }
 
 .token.string {
-    color: #b2ffb2; /* mint green for strings */
+    color: #39ff14; /* super bright neon green for strings */
 }
 
 .token.number {
-    color: #ffd369; /* warm yellow for numbers */
+    color: #ffd369; /* lighter orange for numbers */
 }
 
 .token.operator {
-    color: #f28aff; /* neon pink for operators */
+    color: #00fff0; /* neon teal for operators */
 }
 
 .token.class-name,
 .token.constant {
-    color: #b18aff; /* lavender/purple for classes/constants */
+    color: #ff8c00; /* neon orange for class names/constants */
 }
 
 .token.variable {
-    color: #82cfff; /* bright blue for variable names */
+    color: #00ffd0; /* bright teal for variables */
 }
 
 .token.parameter {
-    color: #ffb07c; /* soft orange for parameters */
+    color: #39ff14; /* neon green for parameters */
 }
 
 .token.punctuation {
-    color: #e6e9ec; /* off-white punctuation */
+    color: #e6e9ec; /* off-white punctuation for readability */
 }
-
-
 
 
 .tab-button.active::after {
