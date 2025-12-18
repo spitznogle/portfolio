@@ -95,6 +95,7 @@ nav a:hover {
   background-color: #f6f4ea;
   border-radius: 20px;
   text-align: left;
+  text-indent: 1;
   box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
 }
 
