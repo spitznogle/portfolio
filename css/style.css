@@ -16,8 +16,8 @@ body {
 
   background:
     linear-gradient(
-      rgba(20, 26, 30, 0.85),
-      rgba(20, 26, 30, 0.85)
+      rgba(20, 26, 30, 0.90),
+      rgba(20, 26, 30, 0.90)
     ),
     url("../images/background_texture.png");
 
@@ -92,6 +92,7 @@ nav a:hover {
 }
 
 .btn {
+  border-radius: 150px 50px 30px 10px;
   padding: 0.75rem 1.5rem;
   border-radius: 14px;
   text-decoration: none;
@@ -132,6 +133,31 @@ nav a:hover {
 }
 
 .section-card p {
+  line-height: 1.7;
+  color: var(--text-muted);
+}
+
+.section-card-about {
+  border-radius: 0 50px 0 50px;
+  max-width: 900px;
+  margin: 3.5rem auto;
+  padding: 2.25rem;
+  background: linear-gradient(
+    160deg,
+    #2a3236,
+    #242b2f
+  );
+  text-align: left;
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.55),
+    inset 0 0 18px rgba(95, 179, 179, 0.05);
+}
+
+.section-card-about h2 {
+  color: var(--accent-glow);
+}
+
+.section-card-about p {
   line-height: 1.7;
   color: var(--text-muted);
 }
@@ -205,20 +231,77 @@ nav a:hover {
   z-index: 2;
 }
 
-.tab-content {
-  display: none;
-  background:
-    linear-gradient(
-      rgba(42, 50, 54, 0.96),
-      rgba(42, 50, 54, 0.96)
-    );
-  padding: 1.25rem;
-  border-radius: 0 14px 14px 14px;
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.6),
-    inset 0 0 18px rgba(95, 179, 179, 0.08);
-  margin-top: -1px;
+/* Code box wrapper */
+.tab-content pre {
+    background: linear-gradient(135deg, #070010, #1b161b, #0a0a1f); /* Deep dark gradient */
+    border: 2px solid #5fb3b3; /* Labradorite flash border */
+    border-radius: 16px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(95, 179, 179, 0.5);
+    color: #e6e9ec;
+    font-family: 'Fira Code', monospace;
+    font-size: 0.95rem;
+    line-height: 1.5;
+    overflow-x: auto;
+    white-space: pre;
+    transition: all 0.3s ease;
 }
+
+/* Hover glow effect */
+.tab-content pre:hover {
+    box-shadow: 0 0 20px rgba(95, 179, 179, 0.7);
+    border-color: #7fd1c8;
+}
+
+/* Prism syntax highlighting for dark labradorite background */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+    color: #7a8a91; /* muted gray for comments */
+    font-style: italic;
+}
+
+.token.keyword {
+    color: #5fffd7; /* bright teal/aqua — pops nicely */
+    font-weight: bold;
+}
+
+.token.function {
+    color: #7fd1c8; /* soft cyan for function names */
+}
+
+.token.string {
+    color: #b2ffb2; /* mint green for strings */
+}
+
+.token.number {
+    color: #ffd369; /* warm yellow for numbers */
+}
+
+.token.operator {
+    color: #f28aff; /* neon pink for operators */
+}
+
+.token.class-name,
+.token.constant {
+    color: #b18aff; /* lavender/purple for classes/constants */
+}
+
+.token.variable {
+    color: #82cfff; /* bright blue for variable names */
+}
+
+.token.parameter {
+    color: #ffb07c; /* soft orange for parameters */
+}
+
+.token.punctuation {
+    color: #e6e9ec; /* off-white punctuation */
+}
+
+
+
 
 .tab-button.active::after {
   content: "";
@@ -233,4 +316,14 @@ nav a:hover {
     var(--accent-glow),
     transparent
   );
+}
+
+/* Hide all tab contents by default */
+.tab-content {
+    display: none;
+}
+
+/* Optional: show the active tab */
+.tab-content.active {
+    display: block;
 }

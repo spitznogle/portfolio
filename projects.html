@@ -32,7 +32,7 @@
 
       <!-- Tab Contents -->
       <div id="main" class="tab-content" style="display: block;">
-        <button class="copy-btn">Copy</button>
+        
         <pre><code class="language-python">
 from functions import add_animal, list_animals
 
@@ -54,10 +54,12 @@ while True:
     else:
         print("Invalid choice.")
         </code></pre>
+        <button class="btn btn-primary copy-btn">Copy</button>
+
       </div>
 
       <div id="functions" class="tab-content">
-        <button class="copy-btn">Copy</button>
+        
         <pre><code class="language-python">
 def add_animal(animals_list):
     """
@@ -91,10 +93,12 @@ def list_animals(animals_list):
         if not animal["adopted"]:
             print(f"{animal['name']}, {animal['species']}, Age: {animal['age']}")
         </code></pre>
+        <button class="btn btn-primary copy-btn">Copy</button>
+
       </div>
 
       <div id="data" class="tab-content">
-        <button class="copy-btn">Copy</button>
+        
         <pre><code class="language-python">
 # Initial data for the shelter
 
@@ -106,6 +110,8 @@ animals.append({"name": "Sigrid", "species": "Dog", "age": 1, "adopted": True})
 animals.append({"name": "Koko", "species": "Cat", "age": 6, "adopted": True})
 animals.append({"name": "Koda", "species": "Cat", "age": 2, "adopted": False})
         </code></pre>
+        <button class="btn btn-primary copy-btn">Copy</button>
+
       </div>
 
     </section>

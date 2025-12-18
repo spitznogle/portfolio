@@ -27,14 +27,19 @@ document.addEventListener("DOMContentLoaded", () => {
 
   copyButtons.forEach(btn => {
     btn.addEventListener("click", () => {
-      const code = btn.nextElementSibling.innerText;
-      navigator.clipboard.writeText(code)
-        .then(() => {
-          btn.innerText = "Copied!";
-          setTimeout(() => btn.innerText = "Copy", 1500);
-        })
-        .catch(err => {
-          console.error("Failed to copy text: ", err);
+
+      const codeBlock = btn.closest(".tab-content").querySelector("pre");
+
+      if (!codeBlock) {
+        console.error("No code block found to copy");
+        return;
+      }
+
+      const code = codeBlock.innerText;
+
+      navigator.clipboard.writeText(code).then(() => {
+        btn.innerText = "Copied!";
+        setTimeout(() => btn.innerText = "Copy", 1500);
         });
     });
   });
