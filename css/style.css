@@ -87,6 +87,30 @@ nav a:hover {
   transform: translate(-2px);
 }
 
+.section-card {
+  max-width: 900px;
+  margin: 2.5rem;
+  padding: 2rem auto;
+  background-color: #f6f4ea;
+  border-radius: 20px;
+  text-align: left;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+}
+
+.section-card h2 {
+  margin-bottom: 1rem;
+  color: #4a5d3f;
+}
+
+.section-card p {
+  line-height: 1.7;
+  color: #444;
+}
+
+.section-card.alt {
+  background-color: #eef3e8;
+}
+
 main {
   max-width: 800px;
   padding: 20px;
