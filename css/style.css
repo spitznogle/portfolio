@@ -91,6 +91,17 @@ nav a {
   margin-top: -5px;
 }
 
+pre {
+  background: #2b2b2b;   /* Dark background like Sublime */
+  color: #f8f8f2;        /* Default text */
+  padding: 1rem;
+  border-radius: 8px;
+  overflow-x: auto;       /* Scroll for long lines */
+  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace; /* monospaced */
+  font-size: 14px;
+}
+
+
 footer {
   margin-top: 40px;
   font-size: 0.9rem;
