@@ -1,18 +1,25 @@
-/* Palette Colors */
 :root {
-  --primary-color: #A3B18A;    /* Sage Green */
-  --secondary-color: #F4F1DE;  /* Warm Cream */
-  --accent-color: #E07A5F;     /* Terracotta */
-  --background-color: #EDEAE0; /* Soft Gray */
-  --text-color: #333333;       /* Charcoal */
+  --primary-color: #2f3e46;     /* Dark stone teal */
+  --secondary-color: #e6e9ec;   /* Pale mineral gray */
+  --accent-color: #5fb3b3;      /* Labradorite flash (teal/blue) */
+  --accent-glow: #7fd1c8;       /* Soft iridescent highlight */
+  --background-color: #1f2528;  /* Deep stone background */
+  --card-bg: #2a3236;           /* Polished stone surface */
+  --text-color: #e8ecef;        /* Soft light text */
+  --text-muted: #aab4bb;
 }
 
-/* Global Styles */
 body {
   margin: 0;
   padding: 0;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  background-color: var(--background-color);
+  background:
+    radial-gradient(
+      circle at top right,
+      rgba(95, 179, 179, 0.12),
+      transparent 60%
+    ),
+    var(--background-color);
   color: var(--text-color);
   display: flex;
   flex-direction: column;
@@ -22,176 +29,102 @@ body {
 }
 
 header {
-  background-color: var(--primary-color);
+  background:
+    linear-gradient(
+      135deg,
+      #2f3e46,
+      #354f52
+    );
   padding: 25px 20px;
-  color: white;
-  text-align: center;
-  border-top-left-radius: 20px;   /* Upper-left corner rounded */
-  border-bottom-right-radius: 20px; /* Lower-right corner rounded */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* subtle shadow */
+  color: var(--text-color);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.6),
+    inset 0 0 20px rgba(95, 179, 179, 0.08);
   margin: 20px;
   max-width: 90%;
 }
 
-header h1 {
-  margin: 0;
-  font-size: 2rem;
-  letter-spacing: 1px;
-}
-
 nav a {
-  color: white;
+  color: var(--text-color);
   text-decoration: none;
   margin: 0 12px;
-  font-weight: bold;
-  transition: color 0.3s;
+  font-weight: 600;
+  transition: color 0.3s, text-shadow 0.3s;
 }
 
 nav a:hover {
   color: var(--accent-color);
+  text-shadow: 0 0 8px rgba(127, 209, 200, 0.6);
 }
 
 .hero {
-  background-image: radial-gradient(
-    circle at top right,
-    rgba(159, 178, 138, 0.25),
-    transparent 60%);
-  
+  background:
+    radial-gradient(
+      circle at top left,
+      rgba(127, 209, 200, 0.18),
+      transparent 55%
+    );
   max-width: 900px;
   margin: 4rem auto;
   padding: 2rem;
   text-align: center;
 }
-.hero h1 {
-  font-size: 2.2rem;
-  font-weight: 700;
-  margin-bottom: 1rem;
-}
-
-.hero-buttons {
-  display: flex;
-  justify-content: center;
-  gap: 1rem;
-  flex-wrap: wrap;
-}
 
 .btn {
   padding: 0.75rem 1.5rem;
-  border-radius: 12px;
+  border-radius: 14px;
   text-decoration: none;
   font-weight: 600;
-  transition: all 0.2s ease;
+  transition: all 0.25s ease;
 }
 
 .btn-primary {
-  background-color: transparent;
-  border: 2px solid #9fb28a;
-  color: #5c6f4f;
+  background: transparent;
+  border: 2px solid var(--accent-color);
+  color: var(--accent-color);
 }
 
-.btn-hover {
-  transform: translate(-2px);
+.btn-primary:hover {
+  background: rgba(95, 179, 179, 0.15);
+  box-shadow: 0 0 14px rgba(127, 209, 200, 0.6);
+  transform: translateY(-2px);
 }
 
 .section-card {
   max-width: 900px;
   margin: 3.5rem auto;
   padding: 2.25rem;
-  background-color: #f6f4ea;
-  border: 1px solid rgba(0, 0, 0, 0.04);
-  border-radius: 24px;
+  background: linear-gradient(
+    160deg,
+    #2a3236,
+    #242b2f
+  );
+  border-radius: 26px;
   text-align: left;
-  text-indent: 1;
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.55),
+    inset 0 0 18px rgba(95, 179, 179, 0.05);
 }
 
 .section-card h2 {
-  margin-top: 0;
-  margin-bottom: 1rem;
-  color: #4a5d3f;
+  color: var(--accent-glow);
 }
 
 .section-card p {
   line-height: 1.7;
-  color: #444;
-}
-
-.section-card.alt {
-  background-color: #eef3e8;
-}
-
-main {
-  max-width: 800px;
-  padding: 20px;
-  line-height: 1.6;
-  width: 100%;
+  color: var(--text-muted);
 }
 
 .project-card {
-  background-color: var(--secondary-color);
+  background-color: var(--card-bg);
   padding: 20px;
   margin: 20px auto;
   width: 90%;
   max-width: 800px;
-  box-shadow: 3px 3px 12px rgba(0,0,0,0.1);
-  border-top-left-radius: 20px;   /* Upper-left corner rounded */
-  border-bottom-right-radius: 20px; /* Lower-right corner rounded */
-}
-
-.project-card h2 {
-  margin-top: 0;
-  color: #4C5C42; /* Slightly darker sage */
-}
-
-.project-card p {
-  margin-bottom: 15px;
-}
-
-.tabs {
-  margin-top: 10px;
-}
-
-.tab-button {
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  padding: 8px 12px;
-  cursor: pointer;
-  font-weight: bold;
-  margin-right: 4px;
-  border-radius: 5px 5px 0 0;
-  transition: background 0.3s;
-}
-
-.tab-button.active {
-  background-color: var(--accent-color);
-}
-
-.tab-content {
-  display: none;
-  background-color: #fff;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-top: none;
-  border-radius: 0 0 10px 10px;
-  overflow-x: auto;
-  margin-top: -5px;
-}
-
-pre {
-  background: #2b2b2b;   /* Dark background like Sublime */
-  color: #f8f8f2;        /* Default text */
-  padding: 1rem;
-  border-radius: 8px;
-  overflow-x: auto;       /* Scroll for long lines */
-  font-family: 'Fira Code', 'Consolas', 'Monaco', monospace; /* monospaced */
-  font-size: 14px;
-}
-
-footer {
-  margin-top: 40px;
-  font-size: 0.9rem;
-  color: #777;
-  text-align: center;
-  padding-bottom: 20px;
+  box-shadow:
+    0 10px 25px rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
 }
