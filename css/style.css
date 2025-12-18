@@ -19,7 +19,7 @@ body {
       rgba(20, 26, 30, 0.85),
       rgba(20, 26, 30, 0.85)
     ),
-    url("images/background_texture.png");
+    url("../images/background_texture.png");
 
   background-size: cover;
   background-position: center;
