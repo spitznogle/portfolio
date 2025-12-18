@@ -50,6 +50,43 @@ nav a:hover {
   color: var(--accent-color);
 }
 
+.hero {
+  max-width: 900px;
+  margin: 4rem auto;
+  padding: 2rem;
+  text-align: center;
+}
+.hero h1 {
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.hero-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 12px;
+  text-decoration: none;
+  font-weight: 600;
+  transition: all 0.2s ease;
+}
+
+.btn-primary {
+  background-color: transparent;
+  border: 2px solid #9fb28a;
+  color: #5c6f4f;
+}
+
+.btn-hover {
+  transform: translate(-2px);
+}
+
 main {
   max-width: 800px;
   padding: 20px;
