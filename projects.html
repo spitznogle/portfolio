@@ -28,13 +28,29 @@
         <button class="tab-button" onclick="openTab(event, 'data')">data.py</button>
       </div>
 
-      <div id="main" class="tab-content" style="display: block;">
-        <pre><code class="language-python">from functions import add_animal, list_animals
+      <div id="main" class="tab-content active">
+  <pre><code class="language-python">
+from functions import add_animal, list_animals
 
 animals = []
 
-# Menu loop here...</code></pre>
-      </div>
+# Menu Loop
+while True:
+    print("1. Add Animal")
+    print("2. List Animals")
+    print("3. Exit")
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        add_animal(animals)
+    elif choice == "2":
+        list_animals(animals)
+    elif choice == "3":
+        break
+    else:
+        print("Invalid choice.")
+  </code></pre>
+</div>
 
       <div id="functions" class="tab-content">
         <pre><code class="language-python">def add_animal(animals_list):
