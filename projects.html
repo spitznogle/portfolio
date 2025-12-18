@@ -4,15 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Projects - Chasity</title>
-  
-  <!-- Styles -->
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
-  
-  <!-- Prism JS -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 </head>
 <body>
   <header>
@@ -32,13 +25,14 @@
 
       <!-- Tabs -->
       <div class="tabs">
-        <button class="tab-button active" data-tab="main">main.py</button>
-        <button class="tab-button" data-tab="functions">functions.py</button>
-        <button class="tab-button" data-tab="data">data.py</button>
+        <button class="tab-button active" onclick="openTab(event, 'main')">main.py</button>
+        <button class="tab-button" onclick="openTab(event, 'functions')">functions.py</button>
+        <button class="tab-button" onclick="openTab(event, 'data')">data.py</button>
       </div>
 
-      <!-- Code Tabs -->
-      <div id="main" class="tab-content active">
+      <!-- Tab Contents -->
+      <div id="main" class="tab-content" style="display: block;">
+        <button class="copy-btn">Copy</button>
         <pre><code class="language-python">
 from functions import add_animal, list_animals
 
@@ -63,6 +57,7 @@ while True:
       </div>
 
       <div id="functions" class="tab-content">
+        <button class="copy-btn">Copy</button>
         <pre><code class="language-python">
 def add_animal(animals_list):
     """
@@ -99,6 +94,7 @@ def list_animals(animals_list):
       </div>
 
       <div id="data" class="tab-content">
+        <button class="copy-btn">Copy</button>
         <pre><code class="language-python">
 # Initial data for the shelter
 
@@ -111,16 +107,31 @@ animals.append({"name": "Koko", "species": "Cat", "age": 6, "adopted": True})
 animals.append({"name": "Koda", "species": "Cat", "age": 2, "adopted": False})
         </code></pre>
       </div>
-    </section>
 
-    <!-- Additional project cards can go here -->
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2025 Chasity Spitznogle</p>
   </footer>
 
-  <!-- Scripts -->
+  <!-- Prism JS -->
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+  <!-- Main JS -->
   <script src="js/main.js"></script>
+  <script>
+    // Copy button functionality
+    document.querySelectorAll(".copy-btn").forEach(btn => {
+      btn.addEventListener("click", () => {
+        const code = btn.nextElementSibling.innerText;
+        navigator.clipboard.writeText(code).then(() => {
+          btn.innerText = "Copied!";
+          setTimeout(() => btn.innerText = "Copy", 1500);
+        });
+      });
+    });
+  </script>
 </body>
 </html>
