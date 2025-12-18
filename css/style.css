@@ -1,0 +1,80 @@
+/* Palette 1 Colors */
+:root {
+  --primary-color: #A3B18A;    /* Sage Green */
+  --secondary-color: #F4F1DE;  /* Warm Cream */
+  --accent-color: #E07A5F;     /* Terracotta */
+  --background-color: #EDEAE0; /* Soft Gray */
+  --text-color: #333333;       /* Charcoal */
+}
+
+body {
+  font-family: 'Arial', sans-serif;
+  background-color: var(--background-color);
+  color: var(--text-color);
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: var(--primary-color);
+  padding: 20px;
+  text-align: center;
+  color: white;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  margin: 0 12px;
+  font-weight: bold;
+}
+
+.project-card {
+  background-color: var(--secondary-color);
+  padding: 20px;
+  margin: 20px auto;
+  width: 90%;
+  max-width: 800px;
+  box-shadow: 3px 3px 12px rgba(0,0,0,0.1);
+  border-top-right-radius: 20px;
+  border-bottom-left-radius: 20px;
+}
+
+.project-card h2 {
+  margin-top: 0;
+  color: #4C5C42; /* Slightly darker sage */
+}
+
+.project-card p {
+  margin-bottom: 15px;
+}
+
+.tabs {
+  margin-top: 10px;
+}
+
+.tab-button {
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 8px 12px;
+  cursor: pointer;
+  font-weight: bold;
+  margin-right: 4px;
+  border-radius: 5px 5px 0 0;
+}
+
+.tab-button.active {
+  background-color: var(--accent-color);
+}
+
+.tab-content {
+  display: none;
+  background-color: #fff;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-top: none;
+  border-radius: 0 0 10px 10px;
+  overflow-x: auto;
+  margin-top: -5px;
+}

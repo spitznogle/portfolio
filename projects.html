@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Projects - Chasity</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header>
+    <h1>Projects</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="projects.html">Projects</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <!-- Example Project Card -->
+    <section class="project-card">
+      <h2>Animal Manager Console App</h2>
+      <p>Interactive Python console app with modular functions and loops.</p>
+
+      <div class="tabs">
+        <button class="tab-button active" onclick="openTab(event, 'main')">main.py</button>
+        <button class="tab-button" onclick="openTab(event, 'functions')">functions.py</button>
+        <button class="tab-button" onclick="openTab(event, 'data')">data.py</button>
+      </div>
+
+      <div id="main" class="tab-content" style="display: block;">
+        <pre><code class="language-python">from functions import add_animal, list_animals
+
+animals = []
+
+# Menu loop here...</code></pre>
+      </div>
+
+      <div id="functions" class="tab-content">
+        <pre><code class="language-python">def add_animal(animals_list):
+    # Function code here
+    pass
+
+def list_animals(animals_list):
+    # Function code here
+    pass</code></pre>
+      </div>
+
+      <div id="data" class="tab-content">
+        <pre><code class="language-python">animals = []  # Initial data</code></pre>
+      </div>
+
+      <p>GitHub Repository: <a href="https://github.com/yourusername/animal-manager" target="_blank">View Code</a></p>
+    </section>
+
+    <!-- Add more project cards below as needed -->
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Chasity Spitznogle</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
