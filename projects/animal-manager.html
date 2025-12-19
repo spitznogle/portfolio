@@ -96,14 +96,19 @@ else:
 
 # Conditional Logic for Adoption Status
 adopted_input = input("Has this animal been adopted? (yes/no): ").lower()
-adopted = adopted_input == "yes"
+if adopted_input == "yes":
+    adopted = True
+else:
+    adopted = False
 
 print("\nYou just added a new animal!")
 print(f"Name: {animal_name}")
 print(f"Species: {animal_species}")
 print(f"Age: {animal_age}")
 print(f"{animal_name} is classified as a {age_category}")
+
 print(f"Adopted? {adopted}")
+
         </code></pre>
         <button class="copy-btn">Copy Code</button>
       </div>
@@ -115,7 +120,8 @@ print(f"Adopted? {adopted}")
 animals = []
 
 # Add Sample Animals
-animals.append({"name": "Harley", "species": "Dog", "age": 5, "adopted": False})
+animals.append({"name": "Harley", "species": "Dog",
+               "age": 5, "adopted": False})
 animals.append({"name": "Sigrid", "species": "Dog", "age": 1, "adopted": True})
 animals.append({"name": "Koko", "species": "Cat", "age": 6, "adopted": True})
 animals.append({"name": "Koda", "species": "Cat", "age": 2, "adopted": False})
@@ -124,6 +130,7 @@ print("Current Animals in Shelter: ")
 for animal in animals:
     if not animal["adopted"]:
         print(f"{animal['name']}, {animal['species']}, Age: {animal['age']}")
+
         </code></pre>
         <button class="copy-btn">Copy Code</button>
       </div>

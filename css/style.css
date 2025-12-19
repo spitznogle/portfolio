@@ -87,44 +87,95 @@ nav a:hover {
 /* ======================================
    Projects Grid & Cards
    ====================================== */
+.projects-section {
+  padding: 2rem; /* space from edges of screen */
+}
+
+.projects-section h2 {
+  margin-bottom: 1rem;
+}
+
 .projects-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
-  gap: 1.5rem;
-  max-width: 2100px;
-  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center; /* center grid on screen */
+  gap: 1rem;
+}
+
+.project-card-link {
+  text-decoration: none;
 }
 
 .project-card {
-  background: linear-gradient(rgba(42,50,54,0.92), rgba(42,50,54,0.92));
-  backdrop-filter: blur(2px);
-  padding: 40px;
-  height: 550px; /* fixed height for uniformity */
-  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  background: #1a1a1a;
+  color: #eee;
+  border-radius: 30px 75px 30px 75px;
+  overflow: hidden;
   display: flex;
   flex-direction: column;
-  overflow: hidden;
-  cursor: pointer;
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  width: 300px;      /* fixed square-ish width */
+  height: 400px;     /* fixed height */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .project-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.7);
+  cursor: pointer;
 }
 
-/* Tabs and pre blocks scrollable inside card */
-.project-card .tabs,
-.project-card pre {
-  overflow-y: auto;
+.project-info {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
-.project-card .badge {
-  align-self: flex-start; /* don't stretch in flex column */
-  width: auto;            /* let badge width fit content */
+.project-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
 }
+
+.project-badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.badge {
+  background: #00bfae;
+  color: #fff;
+  font-size: 0.75rem;
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+.project-description {
+  font-size: 0.9rem;
+  line-height: 1.3;
+  flex-grow: 1; /* pushes preview image to bottom */
+}
+
+.project-image {
+  display: flex;
+  justify-content: center; /* horizontal center */
+  align-items: center;     /* vertical center if extra space */
+  border-top: 1px solid #333;
+  padding: 0.5rem;         /* optional spacing around image */
+}
+
+.project-image img {
+  width: 50%;
+  max-height: 150%; 
+  display: block;
+  border-top: 1px solid #333;
+  object-fit: cover;
+}
+
+
 
 /* ======================================
    Sort Controls
