@@ -1,46 +1,96 @@
+// ==============================
+// Project Manager JS
+// ==============================
+
 // ------------------------------
 // Tab Switching
 // ------------------------------
 function openTab(evt, tabName) {
+  const container = evt.currentTarget.closest(".project-card, .modal-content");
+  if (!container) return;
+
   // Hide all tab contents
-  const tabcontent = document.getElementsByClassName("tab-content");
-  for (let i = 0; i < tabcontent.length; i++) {
-    tabcontent[i].style.display = "none";
-  }
+  container.querySelectorAll(".tab-content").forEach(tc => tc.style.display = "none");
 
-  // Remove "active" class from all buttons
-  const tabbuttons = document.getElementsByClassName("tab-button");
-  for (let i = 0; i < tabbuttons.length; i++) {
-    tabbuttons[i].classList.remove("active");
-  }
+  // Remove active class from all buttons
+  container.querySelectorAll(".tab-button").forEach(tb => tb.classList.remove("active"));
 
-  // Show current tab and mark button active
-  document.getElementById(tabName).style.display = "block";
+  // Show selected tab
+  const activeTab = container.querySelector(`#${tabName}`);
+  if (activeTab) activeTab.style.display = "block";
+
+  // Mark button active
   evt.currentTarget.classList.add("active");
 }
 
 // ------------------------------
-// Copy Code Button Functionality
+// Project Sorting
 // ------------------------------
-document.addEventListener("DOMContentLoaded", () => {
-  const copyButtons = document.querySelectorAll(".copy-btn");
+const grid = document.querySelector(".project-grid");
 
-  copyButtons.forEach(btn => {
+if (grid) {
+  document.querySelectorAll(".sort-controls button").forEach(btn => {
     btn.addEventListener("click", () => {
+      const sortType = btn.dataset.sort;
 
-      const codeBlock = btn.closest(".tab-content").querySelector("pre");
+      const cards = Array.from(grid.children);
 
-      if (!codeBlock) {
-        console.error("No code block found to copy");
-        return;
-      }
+      const sorted = cards.sort((a, b) => {
+        const aVal = a.dataset[sortType];
+        const bVal = b.dataset[sortType];
 
-      const code = codeBlock.innerText;
+        if (!aVal || !bVal) return 0;
 
-      navigator.clipboard.writeText(code).then(() => {
+        if (sortType === "date") return new Date(bVal) - new Date(aVal);
+        if (sortType === "type") return aVal.localeCompare(bVal);
+
+        return 0;
+      });
+
+      sorted.forEach(card => grid.appendChild(card));
+    });
+  });
+}
+
+// ------------------------------
+// Modal and Copy Code Buttons
+// ------------------------------
+const modal = document.querySelector(".modal");
+const modalBody = modal?.querySelector(".modal-body");
+const closeModal = modal?.querySelector(".close-modal");
+
+document.querySelectorAll(".project-card").forEach(card => {
+  // Open modal on card click (ignore tab buttons and copy buttons)
+  card.addEventListener("click", e => {
+    if (e.target.closest(".tab-button") || e.target.closest(".copy-btn")) return;
+
+    if (modalBody && modal) {
+      modalBody.innerHTML = card.innerHTML;
+      modalBody.scrollTop = 0;
+      modal.classList.remove("hidden");
+      Prism.highlightAll();
+    }
+  });
+
+  // Copy buttons
+  card.querySelectorAll(".copy-btn").forEach(btn => {
+    btn.addEventListener("click", e => {
+      e.stopPropagation(); // Prevent modal open
+      const code = btn.closest(".tab-content")?.querySelector("code");
+      if (!code) return;
+
+      navigator.clipboard.writeText(code.innerText).then(() => {
         btn.innerText = "Copied!";
         setTimeout(() => btn.innerText = "Copy", 1500);
-        });
+      });
     });
   });
 });
+
+// Close modal
+if (closeModal && modal) {
+  closeModal.addEventListener("click", () => modal.classList.add("hidden"));
+  modal.addEventListener("click", e => {
+    if (e.target === modal) modal.classList.add("hidden");
+  });
+}

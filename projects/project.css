@@ -1,0 +1,67 @@
+/* =========================
+   Project-specific styles
+========================= */
+
+/* Code block gradient */
+pre[class*="language-"] {
+  background: linear-gradient(135deg, #44103c, #004d3a, #44103c);
+  padding: 1rem;
+  border-radius: 35px 300px 300px 35px;
+  overflow-x: auto;
+  position: relative;
+  margin-bottom: 0.5rem;
+}
+
+/* Code font & base color */
+code[class*="language-"] {
+  font-family: 'Fira Code', monospace;
+  color: #00ff9f;
+  font-size: 0.95rem;
+}
+
+/* Prism syntax colors */
+.token.keyword { color: #00bfae; }
+.token.function { color: #ff9900; }
+.token.string  { color: #00ff9f; }
+.token.comment { color: #aaaaaa; font-style: italic; }
+
+/* Tabs */
+.tab-content {
+  display: none;
+}
+.tab-content.active {
+  display: block;
+}
+
+.tab-button {
+  padding: 0.5rem 1rem;
+  margin-right: 0.5rem;
+  background: #333;
+  border: none;
+  color: #eee;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.tab-button.active {
+  font-weight: bold;
+  background: #00bfae;
+}
+
+/* Copy button below code */
+.copy-btn {
+  display: block;
+  margin: 0.5rem auto 1rem auto; /* bottom center */
+  background: #3d5168; /* warmer, more harmonious orange */
+  border: none;
+  color: #eee;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s ease;
+}
+
+.copy-btn:hover {
+  background: #ff6f3c; /* hover effect for interactivity */
+}
+

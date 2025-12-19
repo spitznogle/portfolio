@@ -3,140 +3,55 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Projects - Chasity</title>
+  <title>My Projects</title>
+
+  <!-- Main site CSS -->
   <link rel="stylesheet" href="css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+
+  <!-- Prism for code highlighting -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+  <!-- Optional project page CSS -->
+  <!-- Only include if needed for this page -->
+  <!-- <link rel="stylesheet" href="projects/project.css"> -->
+
 </head>
 <body>
-  <header>
-    <h1>Projects</h1>
-    <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
-    </nav>
-  </header>
 
-  <main>
-    <!-- Project Card -->
-    <section class="project-card">
-      <h2>Animal Manager Console App</h2>
-      <p>Interactive Python console app with modular functions and loops.</p>
+<header>
+  <h1>My Projects</h1>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="projects.html">Projects</a>
+    <a href="about.html">About</a>
+  </nav>
+</header>
 
-      <!-- Tabs -->
-      <div class="tabs">
-        <button class="tab-button active" onclick="openTab(event, 'main')">main.py</button>
-        <button class="tab-button" onclick="openTab(event, 'functions')">functions.py</button>
-        <button class="tab-button" onclick="openTab(event, 'data')">data.py</button>
-      </div>
+<main>
+  <section class="projects-list">
+    <h2>Featured Projects</h2>
 
-      <!-- Tab Contents -->
-      <div id="main" class="tab-content" style="display: block;">
-        
-        <pre><code class="language-python">
-from functions import add_animal, list_animals
+    <!-- Example Project Card -->
+    <div class="project-card">
+      <h3>Animal Manager Console App</h3>
+      <p>Interactive Python console app with menu-driven loops and modular functions.</p>
+      <a href="projects/animal-manager.html" class="project-link">View Project</a>
+    </div>
 
-animals = []
+    <!-- Add more project cards here -->
+  </section>
+</main>
 
-# Menu Loop
-while True:
-    print("1. Add Animal")
-    print("2. List Animals")
-    print("3. Exit")
-    choice = input("Enter choice: ")
+<footer>
+  <p>&copy; 2025 Chasity L Spitznogle</p>
+</footer>
 
-    if choice == "1":
-        add_animal(animals)
-    elif choice == "2":
-        list_animals(animals)
-    elif choice == "3":
-        break
-    else:
-        print("Invalid choice.")
-        </code></pre>
-        <button class="btn btn-primary copy-btn">Copy</button>
+<!-- Prism JS -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
 
-      </div>
+<!-- Optional project page JS -->
+<!-- <script src="projects/project.js"></script> -->
 
-      <div id="functions" class="tab-content">
-        
-        <pre><code class="language-python">
-# Ask user to input animal information
-animal_species = input("Enter animal's species: ")
-animal_name = input(f"Enter the {animal_species}'s name: ")
-animal_age = int(input(f"Enter {animal_name}'s age: "))
-
-# Age Classification
-if animal_age < 1:
-    age_category = "Baby"
-elif animal_age <= 4:
-    age_category = "Young"
-elif animal_age <= 7:
-    age_category = "Adult"
-else:
-    age_category = "Senior"
-
-# Conditional Logic for Adoption Status
-adopted_input = input("Has this animal been adopted? (yes/no): ").lower()
-if adopted_input == "yes":
-    adopted = True
-else:
-    adopted = False
-
-print("\nYou just added a new animal!")
-print(f"Name: {animal_name}")
-print(f"Species: {animal_species}")
-print(f"Age: {animal_age}")
-print(f"{animal_name} is classified as a {age_category}")
-
-print(f"Adopted? {adopted}")
-
-        </code></pre>
-        <button class="btn btn-primary copy-btn">Copy</button>
-
-      </div>
-
-      <div id="data" class="tab-content">
-        
-        <pre><code class="language-python">
-# Initial data for the shelter
-
-animals = []
-
-# Add sample animals
-animals.append({"name": "Harley", "species": "Dog", "age": 5, "adopted": False})
-animals.append({"name": "Sigrid", "species": "Dog", "age": 1, "adopted": True})
-animals.append({"name": "Koko", "species": "Cat", "age": 6, "adopted": True})
-animals.append({"name": "Koda", "species": "Cat", "age": 2, "adopted": False})
-        </code></pre>
-        <button class="btn btn-primary copy-btn">Copy</button>
-
-      </div>
-
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Chasity L Spitznogle</p>
-  </footer>
-
-  <!-- Prism JS -->
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
-
-  <!-- Main JS -->
-  <script src="js/main.js"></script>
-  <script>
-    // Copy button functionality
-    document.querySelectorAll(".copy-btn").forEach(btn => {
-      btn.addEventListener("click", () => {
-        const code = btn.nextElementSibling.innerText;
-        navigator.clipboard.writeText(code).then(() => {
-          btn.innerText = "Copied!";
-          setTimeout(() => btn.innerText = "Copy", 1500);
-        });
-      });
-    });
-  </script>
 </body>
 </html>

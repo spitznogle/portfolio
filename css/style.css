@@ -1,3 +1,6 @@
+/* ======================================
+   :root - Color Palette
+   ====================================== */
 :root {
   --primary-color: #2f3e46;     /* Dark stone teal */
   --secondary-color: #e6e9ec;   /* Pale mineral gray */
@@ -6,36 +9,31 @@
   --background-color: #1f2528;  /* Deep stone background */
   --card-bg: #2a3236;           /* Polished stone surface */
   --text-color: #e8ecef;        /* Soft light text */
-  --text-muted: #aab4bb;
+  --text-muted: #aab4bb;        /* Muted text */
 }
 
-body {
+/* ======================================
+   Global Styles
+   ====================================== */
+html, body {
   margin: 0;
   padding: 0;
+  min-height: 100%;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: var(--text-color);
 
+  /* Background with texture and overlay */
   background:
-    linear-gradient(
-      rgba(20, 26, 30, 0.90),
-      rgba(20, 26, 30, 0.90)
-    ),
+    linear-gradient(rgba(20, 26, 30, 0.90), rgba(20, 26, 30, 0.90)),
     url("../images/background_texture.png");
-
   background-size: cover;
   background-position: center;
   background-attachment: fixed;
-
-  color: var(--text-color);
-  min-height: 100vh;
 }
 
-html, body {
-  min-height: 100%;
-}
-
+/* Optional subtle background animation */
 @media (prefers-reduced-motion: no-preference) {
   body {
-    background-position: center;
     animation: stoneShift 90s linear infinite;
   }
 
@@ -46,22 +44,19 @@ html, body {
   }
 }
 
+/* ======================================
+   Header & Navigation
+   ====================================== */
 header {
-  background:
-    linear-gradient(
-      135deg,
-      #2f3e46,
-      #354f52
-    );
+  background: linear-gradient(135deg, #2f3e46, #354f52);
   padding: 25px 20px;
+  margin: 20px;
+  max-width: 90%;
   color: var(--text-color);
   border-top-left-radius: 20px;
   border-bottom-right-radius: 20px;
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.6),
-    inset 0 0 20px rgba(95, 179, 179, 0.08);
-  margin: 20px;
-  max-width: 90%;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6),
+              inset 0 0 20px rgba(95, 179, 179, 0.08);
 }
 
 nav a {
@@ -77,26 +72,226 @@ nav a:hover {
   text-shadow: 0 0 8px rgba(127, 209, 200, 0.6);
 }
 
+/* ======================================
+   Hero Section
+   ====================================== */
 .hero {
   border-radius: 150px 50px 30px 10px;
-  background:
-    radial-gradient(
-      circle at top left,
-      rgba(127, 209, 200, 0.18),
-      transparent 55%
-    );
+  background: radial-gradient(circle at top left, rgba(127, 209, 200, 0.18), transparent 55%);
   max-width: 900px;
   margin: 4rem auto;
   padding: 2rem;
   text-align: center;
 }
 
-.btn {
-  border-radius: 150px 50px 30px 10px;
-  padding: 0.75rem 1.5rem;
-  border-radius: 14px;
-  text-decoration: none;
+/* ======================================
+   Projects Grid & Cards
+   ====================================== */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 equal columns */
+  gap: 1.5rem;
+  max-width: 2100px;
+  margin: 0 auto;
+}
+
+.project-card {
+  background: linear-gradient(rgba(42,50,54,0.92), rgba(42,50,54,0.92));
+  backdrop-filter: blur(2px);
+  padding: 40px;
+  height: 550px; /* fixed height for uniformity */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+/* Tabs and pre blocks scrollable inside card */
+.project-card .tabs,
+.project-card pre {
+  overflow-y: auto;
+}
+
+.project-card .badge {
+  align-self: flex-start; /* don't stretch in flex column */
+  width: auto;            /* let badge width fit content */
+}
+
+/* ======================================
+   Sort Controls
+   ====================================== */
+.sort-controls button {
+  background: transparent;
+  border: 2px solid #a67c52; /* warm brown border */
+  color: #c9a27b; /* lighter earthy text */
   font-weight: 600;
+  padding: 0.6rem 1.2rem;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-right: 0.5rem;
+}
+
+.sort-controls button:hover {
+  background: rgba(166, 124, 82, 0.15); /* subtle warm glow */
+  box-shadow: 0 0 12px rgba(201, 162, 123, 0.5);
+  transform: translateY(-2px);
+}
+
+.sort-controls button:active {
+  transform: translateY(0);
+  box-shadow: 0 0 8px rgba(201, 162, 123, 0.3);
+}
+
+/* ======================================
+   Modal & Overlay
+   ====================================== */
+
+/* Modal overlay */
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+  box-sizing: border-box;
+  overflow-y: auto; /* scroll if content taller than viewport */
+  z-index: 1000;
+}
+
+/* Modal content */
+.modal-content {
+  background: var(--card-bg);
+  width: 100%;
+  max-width: 900px;
+  padding: 2rem;
+  border-radius: 20px;
+  position: relative;
+  color: var(--text-color);
+}
+
+/* Close button */
+.modal-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 1.5rem;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--text-color);
+}
+
+/* Tabs inside modal */
+.modal .tabs {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: 1rem;
+}
+
+.modal .tab-button {
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  border-radius: 10px 10px 0 0;
+  font-weight: 600;
+  border: 1px solid rgba(127, 209, 200, 0.15);
+  background: linear-gradient(145deg, #2a3236, #242b2f);
+  color: var(--text-muted);
+}
+
+.modal .tab-button.active {
+  background: linear-gradient(145deg, #354f52, #2f3e46);
+  color: var(--text-color);
+  border-bottom: none;
+}
+
+/* Tab content */
+.modal .tab-content {
+  display: none; /* hidden by default */
+  max-height: 70vh; /* scrollable if content is tall */
+  overflow-y: auto;
+  margin-top: 1rem;
+}
+
+.modal .tab-content.active {
+  display: block;
+}
+
+/* Code block inside modal */
+.modal .tab-content pre {
+  overflow-x: auto;
+  white-space: pre;
+  max-width: 100%;
+}
+
+
+/* ======================================
+   Project Cards
+   ====================================== */
+.project-card {
+  background: linear-gradient(rgba(42,50,54,0.92), rgba(42,50,54,0.92));
+  backdrop-filter: blur(2px);
+  padding: 40px;
+  /* remove fixed height to let cards stretch naturally */
+  /* height: 550px; */
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.6);
+  border-top-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.project-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+}
+
+.project-card .badge {
+  align-self: flex-start;
+  width: auto;
+}
+
+/* Tabs & pre inside cards scrollable */
+.project-card .tabs,
+.project-card pre {
+  overflow-y: auto;
+}
+
+.project-preview {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 14px;
+  margin: 0.75rem 0;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.45);
+}
+
+/* ======================================
+   Buttons
+   ====================================== */
+.btn {
+  border-radius: 14px;
+  padding: 0.75rem 1.5rem;
+  font-weight: 600;
+  text-decoration: none;
   transition: all 0.25s ease;
 }
 
@@ -112,78 +307,41 @@ nav a:hover {
   transform: translateY(-2px);
 }
 
-.section-card {
+/* ======================================
+   Section Cards
+   ====================================== */
+.section-card,
+.section-card-about {
   max-width: 900px;
   margin: 3.5rem auto;
   padding: 2.25rem;
-  background: linear-gradient(
-    160deg,
-    #2a3236,
-    #242b2f
-  );
-  border-radius: 26px;
+  background: linear-gradient(160deg, #2a3236, #242b2f);
   text-align: left;
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.55),
-    inset 0 0 18px rgba(95, 179, 179, 0.05);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.55), inset 0 0 18px rgba(95, 179, 179, 0.05);
 }
 
-.section-card h2 {
-  color: var(--accent-glow);
-}
-
-.section-card p {
-  line-height: 1.7;
-  color: var(--text-muted);
+.section-card {
+  border-radius: 26px;
 }
 
 .section-card-about {
   border-radius: 0 50px 0 50px;
-  max-width: 900px;
-  margin: 3.5rem auto;
-  padding: 2.25rem;
-  background: linear-gradient(
-    160deg,
-    #2a3236,
-    #242b2f
-  );
-  text-align: left;
-  box-shadow:
-    0 12px 30px rgba(0, 0, 0, 0.55),
-    inset 0 0 18px rgba(95, 179, 179, 0.05);
 }
 
+.section-card h2,
 .section-card-about h2 {
   color: var(--accent-glow);
 }
 
+.section-card p,
 .section-card-about p {
   line-height: 1.7;
   color: var(--text-muted);
 }
 
-.project-card {
-  background-color: var(--card-bg);
-  padding: 20px;
-  margin: 20px auto;
-  width: 90%;
-  max-width: 800px;
-  box-shadow:
-    0 10px 25px rgba(0, 0, 0, 0.6);
-  border-top-left-radius: 20px;
-  border-bottom-right-radius: 20px;
-}
-
-.section-card,
-.project-card {
-  background:
-    linear-gradient(
-      rgba(42, 50, 54, 0.92),
-      rgba(42, 50, 54, 0.92)
-    );
-  backdrop-filter: blur(2px);
-}
-
+/* ======================================
+   Tabs & Code Styling
+   ====================================== */
 .tabs {
   display: flex;
   justify-content: center;
@@ -192,13 +350,8 @@ nav a:hover {
   flex-wrap: wrap;
 }
 
-/* Base tab */
 .tab-button {
-  background: linear-gradient(
-    145deg,
-    #2a3236,
-    #242b2f
-  );
+  background: linear-gradient(145deg, #2a3236, #242b2f);
   color: var(--text-muted);
   border: 1px solid rgba(127, 209, 200, 0.15);
   padding: 0.5rem 1rem;
@@ -208,98 +361,19 @@ nav a:hover {
   transition: all 0.25s ease;
 }
 
-/* Hover = subtle flash */
 .tab-button:hover {
   color: var(--accent-glow);
-  box-shadow:
-    inset 0 0 10px rgba(127, 209, 200, 0.15);
+  box-shadow: inset 0 0 10px rgba(127, 209, 200, 0.15);
 }
 
-/* Active tab = polished labradorite */
 .tab-button.active {
-  background: linear-gradient(
-    145deg,
-    #354f52,
-    #2f3e46
-  );
+  background: linear-gradient(145deg, #354f52, #2f3e46);
   color: var(--text-color);
   border-bottom: none;
-  box-shadow:
-    0 -2px 12px rgba(127, 209, 200, 0.45),
-    inset 0 0 12px rgba(127, 209, 200, 0.2);
+  box-shadow: 0 -2px 12px rgba(127, 209, 200, 0.45), inset 0 0 12px rgba(127, 209, 200, 0.2);
   position: relative;
   z-index: 2;
 }
-
-/* Code box wrapper */
-.tab-content pre {
-    background: linear-gradient(135deg, #070010, #1b161b, #0a0a1f); /* Deep dark gradient */
-    border: 2px solid #5fb3b3; /* Labradorite flash border */
-    border-radius: 16px;
-    padding: 20px;
-    box-shadow: 0 4px 12px rgba(95, 179, 179, 0.5);
-    color: #e6e9ec;
-    font-family: 'Fira Code', monospace;
-    font-size: 0.95rem;
-    line-height: 1.5;
-    overflow-x: auto;
-    white-space: pre;
-    transition: all 0.3s ease;
-}
-
-/* Hover glow effect */
-.tab-content pre:hover {
-    box-shadow: 0 0 20px rgba(95, 179, 179, 0.7);
-    border-color: #7fd1c8;
-}
-
-/* Prism.js syntax highlighting - neon labradorite vibes */
-.token.comment,
-.token.prolog,
-.token.doctype,
-.token.cdata {
-    color: #5a5a5a; /* muted gray for comments */
-    font-style: italic;
-}
-
-.token.keyword {
-    color: #00fff0; /* neon teal for keywords */
-    font-weight: bold;
-}
-
-.token.function {
-    color: #ff8c00; /* neon orange for function names */
-}
-
-.token.string {
-    color: #39ff14; /* super bright neon green for strings */
-}
-
-.token.number {
-    color: #ffd369; /* lighter orange for numbers */
-}
-
-.token.operator {
-    color: #00fff0; /* neon teal for operators */
-}
-
-.token.class-name,
-.token.constant {
-    color: #ff8c00; /* neon orange for class names/constants */
-}
-
-.token.variable {
-    color: #00ffd0; /* bright teal for variables */
-}
-
-.token.parameter {
-    color: #39ff14; /* neon green for parameters */
-}
-
-.token.punctuation {
-    color: #e6e9ec; /* off-white punctuation for readability */
-}
-
 
 .tab-button.active::after {
   content: "";
@@ -308,20 +382,77 @@ nav a:hover {
   right: 10%;
   bottom: -2px;
   height: 2px;
-  background: linear-gradient(
-    to right,
-    transparent,
-    var(--accent-glow),
-    transparent
-  );
+  background: linear-gradient(to right, transparent, var(--accent-glow), transparent);
 }
 
-/* Hide all tab contents by default */
-.tab-content {
-    display: none;
+/* Code block styles */
+.tab-content pre {
+  background: linear-gradient(135deg, #070010, #1b161b, #0a0a1f);
+  border: 2px solid #5fb3b3;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(95, 179, 179, 0.5);
+  color: #e6e9ec;
+  font-family: 'Fira Code', monospace;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  overflow-x: auto;
+  white-space: pre;
+  transition: all 0.3s ease;
 }
 
-/* Optional: show the active tab */
-.tab-content.active {
-    display: block;
+.tab-content pre:hover {
+  box-shadow: 0 0 20px rgba(95, 179, 179, 0.7);
+  border-color: #7fd1c8;
 }
+
+/* Prism.js syntax highlighting */
+.token.comment,
+.token.prolog,
+.token.doctype,
+.token.cdata {
+  color: #5a5a5a;
+  font-style: italic;
+}
+.token.keyword { color: #00fff0; font-weight: bold; }
+.token.function { color: #ff8c00; }
+.token.string { color: #39ff14; }
+.token.number { color: #ffd369; }
+.token.operator { color: #00fff0; }
+.token.class-name,
+.token.constant { color: #ff8c00; }
+.token.variable { color: #00ffd0; }
+.token.parameter { color: #39ff14; }
+.token.punctuation { color: #e6e9ec; }
+
+/* Hide tab contents by default */
+.tab-content { display: none; }
+.tab-content.active { display: block; }
+
+/* ======================================
+   Misc Project Elements
+   ====================================== */
+.project-type {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6f8458;
+  margin-bottom: 0.3rem;
+}
+
+.badge {
+  font-size: 0.7rem;
+  padding: 4px 10px;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-weight: 500;
+  letter-spacing: 0.03em;
+}
+
+.badge--practice { background: #efe4d6; color: #6a4e3a; padding: 3px 8px; margin-left: 8px; }
+.badge--progress { background: #f1e1c8; color: #8A6239; }
+.badge--prototype { background: #e8e3db; color: #4A5A6A; }
+.badge--complete { background: #e2e6da; color: #2F5D55; }
+.badge--deployed { background: #e6ddd3; color: #2F4F68; }

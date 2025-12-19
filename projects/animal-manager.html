@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Animal Manager Console App</title>
+
+  <!-- Main site CSS -->
+  <link rel="stylesheet" href="../css/style.css">
+
+  <!-- Prism CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/themes/prism-tomorrow.min.css">
+
+  <!-- Project-specific CSS -->
+  <link rel="stylesheet" href="./project.css">
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code&display=swap" rel="stylesheet">
+</head>
+<body>
+
+<header>
+  <h1>Projects</h1>
+  <nav>
+    <a href="../index.html">Home</a>
+    <a href="../projects.html">Projects</a>
+    <a href="../about.html">About</a>
+  </nav>
+</header>
+
+<main>
+  <section class="project-page">
+    <h2>Animal Manager Console App</h2>
+    <p class="project-description">
+      Interactive Python console app built to practice modular functions,
+      conditionals, and menu-driven loops.
+    </p>
+
+    <!-- ===================== -->
+    <!-- File Tabs -->
+    <!-- ===================== -->
+    <div class="tabs">
+      <button class="tab-button active" data-tab="main">main.py</button>
+      <button class="tab-button" data-tab="functions">functions.py</button>
+      <button class="tab-button" data-tab="data">data.py</button>
+    </div>
+
+    <!-- ===================== -->
+    <!-- Code Panels -->
+    <!-- ===================== -->
+    <div class="project-content">
+
+      <!-- main.py -->
+      <div class="tab-content active" id="main">
+        <pre><code class="language-python">
+from functions import add_animal, list_animals
+
+animals = []
+
+while True:
+    print("1. Add Animal")
+    print("2. List Animals")
+    print("3. Exit")
+
+    choice = input("Enter choice: ")
+
+    if choice == "1":
+        add_animal(animals)
+    elif choice == "2":
+        list_animals(animals)
+    elif choice == "3":
+        break
+    else:
+        print("Invalid choice.")
+        </code></pre>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+
+      <!-- functions.py -->
+      <div class="tab-content" id="functions">
+        <pre><code class="language-python">
+# Ask user to input animal information
+animal_species = input("Enter animal's species: ")
+animal_name = input(f"Enter the {animal_species}'s name: ")
+animal_age = int(input(f"Enter {animal_name}'s age: "))
+
+# Age Classification
+if animal_age < 1:
+    age_category = "Baby"
+elif animal_age <= 4:
+    age_category = "Young"
+elif animal_age <= 7:
+    age_category = "Adult"
+else:
+    age_category = "Senior"
+
+# Conditional Logic for Adoption Status
+adopted_input = input("Has this animal been adopted? (yes/no): ").lower()
+adopted = adopted_input == "yes"
+
+print("\nYou just added a new animal!")
+print(f"Name: {animal_name}")
+print(f"Species: {animal_species}")
+print(f"Age: {animal_age}")
+print(f"{animal_name} is classified as a {age_category}")
+print(f"Adopted? {adopted}")
+        </code></pre>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+
+      <!-- data.py -->
+      <div class="tab-content" id="data">
+        <pre><code class="language-python">
+# Empty List to Store Animals
+animals = []
+
+# Add Sample Animals
+animals.append({"name": "Harley", "species": "Dog", "age": 5, "adopted": False})
+animals.append({"name": "Sigrid", "species": "Dog", "age": 1, "adopted": True})
+animals.append({"name": "Koko", "species": "Cat", "age": 6, "adopted": True})
+animals.append({"name": "Koda", "species": "Cat", "age": 2, "adopted": False})
+
+print("Current Animals in Shelter: ")
+for animal in animals:
+    if not animal["adopted"]:
+        print(f"{animal['name']}, {animal['species']}, Age: {animal['age']}")
+        </code></pre>
+        <button class="copy-btn">Copy Code</button>
+      </div>
+
+    </div>
+
+  </section>
+</main>
+
+<footer>
+  <p>&copy; 2025 Chasity L Spitznogle</p>
+</footer>
+
+<!-- Prism JS -->
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/prism.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/prismjs@1.29.0/components/prism-python.min.js"></script>
+
+<!-- Project JS -->
+<script src="./project.js"></script>
+
+</body>
+</html>
