@@ -13,6 +13,36 @@
 }
 
 /* ======================================
+   Header
+   ====================================== */
+.hero-header {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 6rem 1rem 4rem; /* space for logo above and below */
+}
+
+.hero-logo {
+  position: absolute;
+  top: 50%; 
+  left: 15%;
+  transform: translate(-50%, -60%); /* move slightly up so text sits on top */
+  max-width: 250px;
+  height: auto;
+  opacity: 0.95; /* subtle behind text */
+  pointer-events: none;
+  z-index: 1; /* behind h1 */
+}
+
+.hero-header h1 {
+  position: relative;
+  z-index: 2; /* always on top of logo */
+}
+
+/* ======================================
    Global Styles
    ====================================== */
 html, body {
